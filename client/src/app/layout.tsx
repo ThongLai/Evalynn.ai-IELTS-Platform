@@ -7,8 +7,13 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { ClientProvider } from "./client-provider";
 
 export const metadata: Metadata = {
-  title: "Evalynn.ai - IELTS Scoring Platform",
+  title: "Evalynn.ai",
   description: "AI-powered IELTS writing assessment and scoring platform",
+  icons: {
+    icon: '/favicon.svg',
+    shortcut: '/favicon.svg',
+    apple: '/apple-touch-icon.svg',
+  },
 };
 
 export default function RootLayout({
