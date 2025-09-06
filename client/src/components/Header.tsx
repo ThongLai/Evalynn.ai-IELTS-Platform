@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { PenTool, User, Menu } from "lucide-react";
 import { useState } from "react";
 
@@ -8,14 +9,14 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 shadow-card">
+    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 shadow-sm">
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center space-x-2">
           <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-primary">
             <PenTool className="h-6 w-6 text-primary-foreground" />
           </div>
           <div>
-            <h1 className="text-xl font-bold text-gradient">Evalynn.ai</h1>
+            <h1 className="text-xl font-bold text-gradient-green">Evalynn.ai</h1>
             <p className="text-xs text-muted-foreground">IELTS Essay Scoring</p>
           </div>
         </div>
@@ -37,11 +38,12 @@ const Header = () => {
         </nav>
 
         <div className="hidden md:flex items-center space-x-4">
+          <ThemeToggle />
           <Button variant="ghost" size="sm" className="transition-smooth">
             <User className="h-4 w-4 mr-2" />
             Sign In
           </Button>
-          <Button size="sm" className="button-gradient hover:opacity-90 transition-smooth">
+          <Button size="sm" className="btn-primary-green">
             Get Started
           </Button>
         </div>
@@ -74,11 +76,14 @@ const Header = () => {
               Pricing
             </a>
             <div className="pt-3 space-y-2">
+              <div className="flex justify-center pb-2">
+                <ThemeToggle />
+              </div>
               <Button variant="ghost" size="sm" className="w-full justify-start">
                 <User className="h-4 w-4 mr-2" />
                 Sign In
               </Button>
-              <Button size="sm" className="w-full button-gradient">
+              <Button size="sm" className="w-full btn-primary-green">
                 Get Started
               </Button>
             </div>

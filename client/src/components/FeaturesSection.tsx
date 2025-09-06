@@ -19,63 +19,63 @@ const FeaturesSection = () => {
       title: "Instant AI Scoring",
       description: "Get your IELTS essay scored in seconds with our advanced AI technology trained on thousands of real IELTS essays.",
       badge: "Fast",
-      color: "text-warning"
+      color: "text-emerald-600 dark:text-emerald-400"
     },
     {
       icon: Target,
       title: "IELTS-Standard Accuracy",
       description: "Our scoring algorithm follows official IELTS band descriptors to provide accurate, reliable assessments.",
       badge: "Accurate",
-      color: "text-success"
+      color: "text-emerald-600 dark:text-emerald-400"
     },
     {
       icon: BookOpen,
       title: "Detailed Feedback",
       description: "Receive comprehensive feedback on all four IELTS criteria with specific suggestions for improvement.",
       badge: "Comprehensive",
-      color: "text-primary"
+      color: "text-emerald-600 dark:text-emerald-400"
     },
     {
       icon: TrendingUp,
       title: "Progress Tracking",
       description: "Monitor your improvement over time with detailed analytics and performance insights.",
       badge: "Analytics",
-      color: "text-accent"
+      color: "text-emerald-600 dark:text-emerald-400"
     },
     {
       icon: Brain,
       title: "Smart Recommendations",
       description: "Get personalized study recommendations based on your writing patterns and areas for improvement.",
       badge: "Personalized",
-      color: "text-primary"
+      color: "text-emerald-600 dark:text-emerald-400"
     },
     {
       icon: Globe,
       title: "Multiple Task Types",
       description: "Practice with various IELTS Writing Task 1 and Task 2 prompts covering all common topics.",
       badge: "Variety",
-      color: "text-accent"
+      color: "text-emerald-600 dark:text-emerald-400"
     },
     {
       icon: Clock,
       title: "Timed Practice",
       description: "Simulate real exam conditions with built-in timers and time management guidance.",
       badge: "Realistic",
-      color: "text-warning"
+      color: "text-emerald-600 dark:text-emerald-400"
     },
     {
       icon: Shield,
       title: "Secure & Private",
       description: "Your essays are processed securely and never shared. Complete privacy guaranteed.",
       badge: "Secure",
-      color: "text-success"
+      color: "text-emerald-600 dark:text-emerald-400"
     },
     {
       icon: Users,
       title: "Expert Validation",
       description: "Our AI has been trained and validated by certified IELTS examiners and language experts.",
       badge: "Expert",
-      color: "text-primary"
+      color: "text-emerald-600 dark:text-emerald-400"
     }
   ];
 
@@ -99,18 +99,18 @@ const FeaturesSection = () => {
           {features.map((feature, index) => (
             <Card 
               key={index} 
-              className="shadow-card hover:shadow-soft transition-spring border-border/50 group"
+              className="glass-card hover:shadow-lg transition-all duration-300 group hover:scale-105"
             >
               <CardHeader>
                 <div className="flex items-center justify-between mb-3">
-                  <div className={`p-3 rounded-lg bg-primary/10 ${feature.color} group-hover:scale-110 transition-spring`}>
+                  <div className={`p-3 rounded-lg bg-emerald-100 dark:bg-emerald-900/30 ${feature.color} group-hover:scale-110 transition-all duration-200`}>
                     <feature.icon className="h-6 w-6" />
                   </div>
-                  <Badge variant="outline" className="text-xs">
+                  <Badge variant="outline" className="text-xs border-emerald-200 dark:border-emerald-700 text-emerald-700 dark:text-emerald-300">
                     {feature.badge}
                   </Badge>
                 </div>
-                <CardTitle className="text-xl text-foreground group-hover:text-primary transition-smooth">
+                <CardTitle className="text-xl text-foreground group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
                   {feature.title}
                 </CardTitle>
               </CardHeader>
