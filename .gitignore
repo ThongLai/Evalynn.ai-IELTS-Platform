@@ -1,36 +1,68 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# dependencies
-/node_modules
+# Dependencies
+node_modules/
+client/node_modules/
+server/node_modules/
 /.pnp
 .pnp.js
 
-# testing
+# Testing
 /coverage
+client/coverage/
+server/coverage/
 
-# next.js
-/.next/
-/out/
+# Next.js (client)
+client/.next/
+client/out/
 
-# production
+# Server build
+server/dist/
+
+# Production builds
 /build
+client/build/
+server/build/
 
-# misc
-.DS_Store
-*.pem
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+client/.env*
+server/.env*
 
-# debug
+# Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+lerna-debug.log*
 
-# local env files
-.env*.local
-.env
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
 
-# vercel
+# Misc
+.DS_Store
+*.pem
+.vscode/
+.idea/
+
+# Lock files (use npm)
+yarn.lock
+bun.lockb
+pnpm-lock.yaml
+
+# Vercel
 .vercel
 
-# typescript
+# TypeScript
 *.tsbuildinfo
 next-env.d.ts
+
+# Docker
+.docker/
+docker-compose.override.yml
