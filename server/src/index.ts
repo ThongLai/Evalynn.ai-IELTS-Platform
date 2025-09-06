@@ -4,6 +4,7 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import rateLimit from 'express-rate-limit';
 import dotenv from 'dotenv';
+import getPort from 'get-port';
 
 // Load environment variables
 dotenv.config();
@@ -19,7 +20,7 @@ import { errorHandler } from '@/middleware/errorHandler';
 import { notFound } from '@/middleware/notFound';
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 
 // Rate limiting
 const limiter = rateLimit({
@@ -43,8 +44,9 @@ app.use(express.urlencoded({ extended: true }));
 app.get('/health', (req, res) => {
   res.status(200).json({
     status: 'OK',
-    message: 'Evalynn.ai IELTS Scoring Platform API is running',
+    message: 'Evalynn.ai IELTS Scoring Platform API is running successfully',
     timestamp: new Date().toISOString(),
+    version: '1.0.0',
   });
 });
 
@@ -58,11 +60,47 @@ app.use('/api/users', userRoutes);
 app.use(notFound);
 app.use(errorHandler);
 
-// Start server
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
-  console.log(`🌍 Environment: ${process.env.NODE_ENV || 'development'}`);
-  console.log(`📊 Health check: http://localhost:${PORT}/health`);
-});
+// Start server with automatic port detection
+const startServer = async () => {
+  try {
+    const originalPort = parseInt(process.env.PORT || '5001', 10);
+    let currentPort = originalPort;
+    let availablePort;
+    let attempts = 0;
+    const maxAttempts = 10; // Limit attempts to prevent infinite loop
+    
+    while (attempts < maxAttempts) {
+      availablePort = await getPort({ port: currentPort });
+      
+      // If getPort returns the requested port, we found it
+      if (availablePort === currentPort) {
+        break;
+      }
+      
+      // If getPort returns a different port, the requested port was taken
+      // Try the next port in sequence
+      currentPort++;
+      attempts++;
+    }
+    
+    if (attempts >= maxAttempts) {
+      throw new Error(`Could not find an available port after ${maxAttempts} attempts starting from ${originalPort}`);
+    }
+    
+    app.listen(availablePort, () => {
+      if (availablePort !== originalPort) {
+        console.log(`⚠️  Port ${originalPort} is in use, using port ${availablePort} instead.`);
+      }
+      console.log(`🚀 Server running on port ${availablePort}`);
+      console.log(`🌍 Environment: ${process.env.NODE_ENV || 'development'}`);
+      console.log(`📊 Health check: http://localhost:${availablePort}/health`);
+    });
+  } catch (error) {
+    console.error('❌ Failed to start server:', error);
+    process.exit(1);
+  }
+};
+
+startServer();
 
 export default app;
