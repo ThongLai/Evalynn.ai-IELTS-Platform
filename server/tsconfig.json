@@ -20,11 +20,7 @@
     "noUncheckedIndexedAccess": false,
     "exactOptionalPropertyTypes": false,
     "noImplicitOverride": true,
-    "types": ["node"],
-        "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/*"]
-    }
+    "types": ["node"]
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist", "**/*.test.ts"]

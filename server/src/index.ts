@@ -10,14 +10,14 @@ import getPort from 'get-port';
 dotenv.config();
 
 // Import routes
-import authRoutes from '@/routes/auth';
-import essayRoutes from '@/routes/essays';
-import scoringRoutes from '@/routes/scoring';
-import userRoutes from '@/routes/users';
+import authRoutes from './routes/auth';
+import essayRoutes from './routes/essays';
+import scoringRoutes from './routes/scoring';
+import userRoutes from './routes/users';
 
 // Import middleware
-import { errorHandler } from '@/middleware/errorHandler';
-import { notFound } from '@/middleware/notFound';
+import { errorHandler } from './middleware/errorHandler';
+import { notFound } from './middleware/notFound';
 
 const app = express();
 const PORT = process.env.PORT || 5001;

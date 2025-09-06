@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { ScoringService } from '@/services/ScoringService';
+import { ScoringService } from '../services/ScoringService';
 
 export class ScoringController {
   private scoringService: ScoringService;

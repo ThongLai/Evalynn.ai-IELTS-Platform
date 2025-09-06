@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { ScoringController } from '@/controllers/ScoringController';
+import { ScoringController } from '../controllers/ScoringController';
 
 const router = Router();
 const scoringController = new ScoringController();

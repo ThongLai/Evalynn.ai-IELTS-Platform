@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { EssayService } from '@/services/EssayService';
+import { EssayService } from '../services/EssayService';
 
 export class EssayController {
   private essayService: EssayService;
